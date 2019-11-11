@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        button {
+            background-color: green;
+            padding: 14px 20px;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        .login {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: rgba(105,105,105, 0.6);
+        }
+        .login-form {
+            position: relative;
+            width: 350px;
+            height:auto;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 50px auto;
+            text-align: left;
+            padding-top: 10px;
+        }
+        .img-k {
+            width:200px;
+            height: 200px; 
+            border-radius: 100px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .img-k span {
+            position: absolute;
+            display: block;
+            font-size: 40px;
+            right: 10px;
+            top: 0px;
+           }
+        .img-k span:hover {
+            color: red;
+            cursor: pointer;
+        }  
+        .img-k img {
+            width: 200px;
+            height: 200px;
+        }
+        .formd {
+            margin-top: 10px;
+            width: 100%;
+        }
+        .formd .span {
+            display: block;   
+            float: left;
+            margin: 5px 12px;
+            font-size: 20px;      
+        }
+        .formd input {
+            display: block;
+        }
+        .formd .input{
+            width: 90%;
+            height: 30px;
+            padding: 2px 5px;
+            font-size: 16px;
+            margin: 0 auto;
+        }
+        .loginn {
+            width: 94%;
+            margin: 5px auto;
+            padding: 10px 20px;
+            background-color: green;
+            border: none;
+            outline: none;
+            color: #ffffff;
+            font-size: 18px;
+        }
+        .loginn:hover {
+            opacity: 0.8;
+        }
+        .chec {
+            float: left;
+            margin: 7px 12px 0 12px; 
+        }
+        .footer {
+            margin-top: 10px;
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            background-color: rgba(190,190,190,0.6);
+        }
+        .footer input {
+            margin: 12px 10px;
+            float: left;
+            padding: 10px 20px;
+            background-color: rgb(255,48,48);
+            color: #ffffff;
+            border: none;
+        }
+        .footer span {
+            float: right;
+            margin-right: 10px;
+        }
+        .footer span a {
+            color: darkslateblue;
+        }
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+
+        @-webkit-keyframes animatezoom {
+            from {-webkit-transform: scale(0)} 
+            to {-webkit-transform: scale(1)}
+        }
+            
+        @keyframes animatezoom {
+            from {transform: scale(0)} 
+            to {transform: scale(1)}
+        }
+    </style>
+</head>
+<body>
+    <h2>登录表单</h2>
+    <button onclick="document.querySelector('.login').style.display = 'block'">登录</button>
+    <div class="login">
+        <form class="login-form animate" action="login.php" method="POST">
+            <div class="img-k">
+                <span onclick="myFunction()">&times;</span>
+                <img src="imgs/hsq.jpg">
+            </div>
+            <div class="formd">
+                <label for="name">
+                    <span class="span">Username:</span>
+                    <input class="input" type="text" name="name" required placeholder="Enter Username">
+                </label>
+                <label for="name">
+                        <sapn class="span">Password:</sapn>
+                        <input class="input" type="text" name="name" required placeholder="Enter Password">
+                </label>
+                <input class="loginn" type="button" value="登录" onclick = "cleanFunction()">
+                <input class="chec" type="checkbox" checked="checkbox">
+                记住我
+            </div>
+            <div class="footer">
+                <input type="button" value="Cancel" onclick="myFunction()">
+                <span>Forget<a href="#">password?</a></span>
+            </div>
+        </form>
+    </div>
+    <script>
+        function myFunction() {
+            document.querySelector(".login").style.display = "none";
+        }
+        // 点击登录栏外部的区域，关闭登录框
+        window.onclick = function(e) {
+            var modal = document.querySelector(".login");
+            if(e.target===modal) {
+                document.querySelector(".login").style.display = "none";
+            }
+        }   
+        function cleanFunction() {
+            let input = document.querySelectorAll(".input");
+            input[0].value = "";
+            input[1].value = "";
+        }
+    </script>
+</body>
+</html>
